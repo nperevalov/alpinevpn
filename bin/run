@@ -33,6 +33,7 @@ persist-key
 persist-tun
 push "dhcp-option DNS 8.8.8.8"
 push "dhcp-option DNS 8.8.4.4"
+push "redirect-gateway def1" 
 
 proto udp
 port 1194
@@ -51,6 +52,7 @@ MY_IP_ADDR=$(curl -s http://myip.enix.org/REMOTE_ADDR)
 client
 nobind
 dev tun
+redirect-gateway def1
 
 <key>
 `cat key.pem`
