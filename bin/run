@@ -10,8 +10,6 @@ set -e
 cd /etc/openvpn
 # This file tells `serveconfig` that there is a config there
 touch placeholder
-[ -f dh.pem ] ||
-    openssl dhparam -out dh.pem 1024
 [ -f key.pem ] ||
     openssl genrsa -out key.pem 2048
 chmod 600 key.pem
@@ -21,6 +19,7 @@ chmod 600 key.pem
     openssl x509 -req -in csr.pem -out cert.pem -signkey key.pem -days 24855
 
 [ -f udp1194.conf ] || cat >udp1194.conf <<EOF
+data-ciphers AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305
 server 172.20.0.0 255.255.0.0
 verb 3
 duplicate-cn
