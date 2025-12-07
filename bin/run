@@ -20,7 +20,6 @@ chmod 600 key.pem
 
 [ -f udp1194.conf ] || cat >udp1194.conf <<EOF
 data-ciphers AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305
-data-ciphers-fallback BF-CBC
 server 172.20.0.0 255.255.0.0
 topology subnet
 verb 3
@@ -28,6 +27,7 @@ duplicate-cn
 key key.pem
 ca cert.pem
 cert cert.pem
+dh none
 keepalive 10 60
 persist-key
 persist-tun
