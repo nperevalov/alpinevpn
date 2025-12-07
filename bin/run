@@ -27,7 +27,6 @@ duplicate-cn
 key key.pem
 ca cert.pem
 cert cert.pem
-dh dh.pem
 keepalive 10 60
 persist-key
 persist-tun
